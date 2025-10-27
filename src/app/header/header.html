@@ -1,3 +1,9 @@
 <header>
     <h1>SnapFace</h1>
+    <nav>
+        <!-- routerLinkActive pour souligner le rubrique activ -->
+        <!-- routerLinkActiveOptions par ce que par defaut une route souligner entrainera le soulignement de ses parents -->
+        <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home</a>
+        <a routerLink="snapFaces" routerLinkActive="active">snapFaces</a>
+    </nav>
 </header>

@@ -1,0 +1,21 @@
+<!-- ngClass pour appliquer une class conditionnellement -->
+<div class="face-snap-card" [ngClass] = "{ snapped : hasSnapped}">
+  <h2>{{ FaceSnap.title | titlecase}}</h2>
+  <a routerLink="/snapFaces">BACK</a>
+  @if(FaceSnap.location){
+    <p>{{FaceSnap.location}}</p>
+  }@else{
+    <p>Localisation non specifiers</p>
+  }
+  <img [src]="FaceSnap.imageUrl" [alt]="FaceSnap.title">
+  <p>{{ FaceSnap.description }}</p>
+  <!-- formatage de la date  -->
+  <p>FaceSnap créée le {{ FaceSnap.createAt | date : "fullDate"}}</p>
+  <p>
+    <button (click) = "OnAddSnap()" >{{ message }} Oh snap</button>
+    <!-- ngStyle pour attribuer du style a un element du DOM -->
+    <span [ngStyle] = "{color : 'rgb(0,'+ FaceSnap.snaps +',0)' }" >🤌 {{ FaceSnap.snaps }}</span>
+  </p>
+  <!-- formatage du nombre sous forme de monnaie -->
+  <h2> {{FaceSnap.price | currency : 'XOF' : 'symbol' :'1.0-0'}} </h2>
+</div>

@@ -29,11 +29,16 @@ export class SnapFaceService{
         return [...this.snaofaces]
     }
 
-    getSnapFacebyId(id : string , typeSnap : snapType) : void {
+    getSnapFaceById(id : string) : SnapFace {
         const snapface = this.snaofaces.find(SnapFace => SnapFace.id === id)
         if(!snapface)
             throw new Error("Snap face undefied")
 
+        return snapface
+    }
+
+    SnapOrUnsnapASnapace(id : string , typeSnap : snapType) : void {
+        const snapface = this.getSnapFaceById(id)
         snapface.actionSnapUnSnap(typeSnap)
     }
 }
