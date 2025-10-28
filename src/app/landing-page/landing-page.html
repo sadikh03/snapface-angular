@@ -1,4 +1,12 @@
 <div class="landing-block">
+  <!-- ngSubmit est event binding -->
+  <!-- #form la reference du formulaire -->
+  <form #form = "ngForm" (ngSubmit)="onSubmit(form)">
+    <label for="email">Entrer votre mail</label>
+    <!-- ngModel fait la liaison de l'input de notre variable le two way binding -->
+    <input type="email" id="email" [(ngModel)] = "email" name="userEmail">
+    <button type="submit">ok</button>
+  </form>
   <img src="https://www.sliderrevolution.com/wp-content/uploads/2022/09/faq_featuredimage.png" alt="acceuil">
   <div class="landing-links">
     <!-- changement de route via une methode  -->
