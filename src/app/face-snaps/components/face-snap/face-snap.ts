@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SnapFace } from '../Models/SnapFace';
+import { SnapFace } from '../../../core/Models/SnapFace';
 import {TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     TitleCasePipe ,
-    ],
+  ],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss'
 })

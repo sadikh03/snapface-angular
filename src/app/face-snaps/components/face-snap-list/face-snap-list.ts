@@ -1,19 +1,21 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { SnapFace } from '../Models/SnapFace';
+import { SnapFace } from '../../../core/Models/SnapFace';
 import { FaceSnap } from '../face-snap/face-snap';
-import { SnapFaceService } from '../Services/SnapFace.Services';
-import { interval, Subject, takeUntil, tap } from 'rxjs';
+import { SnapFaceService } from '../../../core/Services/SnapFace.Services';
+import { interval, Observable, Subject, takeUntil, tap } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-face-snap-list',
   imports: [
-    FaceSnap
+    FaceSnap , AsyncPipe
   ],
   templateUrl: './face-snap-list.html',
   styleUrl: './face-snap-list.scss'
 })
 export class FaceSnapList implements OnInit , OnDestroy{
   dsetroy$ !: Subject<boolean>
-  snapFaces !: SnapFace[]
+  // snapFaces !: SnapFace[]
+  snapFaces$ !: Observable<SnapFace[]>
 
   constructor(private snapFaceServices : SnapFaceService){}
 
@@ -21,7 +23,9 @@ export class FaceSnapList implements OnInit , OnDestroy{
 
     this.dsetroy$ = new Subject<boolean>()
 
-    this.snapFaces = this.snapFaceServices.getSnapFaces()
+    // this.snapFaces = this.snapFaceServices.getSnapFaces()
+
+    this.snapFaces$ = this.snapFaceServices.getSnapFaces()
 
     interval(1000).pipe(
       takeUntil(this.dsetroy$) ,

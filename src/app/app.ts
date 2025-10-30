@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Header} from './header/header';
+import {Header} from './core/component/header/header';
 import { RouterOutlet } from '@angular/router';
 import {  delay,  of } from 'rxjs';
 
